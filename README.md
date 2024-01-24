@@ -24,8 +24,8 @@ Votre base de données devrait être accessible à l'adresse indiquée.
 
 ### Étape 2 : Configuration de l'Environnement
 
-1 - Créez un environnement virtuel.
-2 - Installez les dépendances nécessaires.
+1. Créez un environnement virtuel.
+2. Installez les dépendances nécessaires.
 
 ### Étape 3 : Lancement du Scraper
 
@@ -39,8 +39,8 @@ Cela générera un fichier resultats.jsonl à la racine du projet.
 
 ### Étape 4 : Affichage des Données avec Flask
 
-1 - Déplacez le fichier resultats.jsonl dans /application_flask/data/.
-2 - Dans le répertoire /application_flask, exécutez :
+1. Déplacez le fichier resultats.jsonl dans /application_flask/data/.
+2. Dans le répertoire /application_flask, exécutez :
 
 ```bash
 python3 app.py
