@@ -1,0 +1,32 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    padding: 10%;
+    box-sizing: border-box;
+}
+
+p {
+    line-height: 1.4em;
+}
+
+h1 {
+    color: #333;
+}
+
+a {
+    color: #FFF;
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: hsl(213, 24%, 50%);
+    border-radius: 3px;
+    margin: 0 10px;
+}
