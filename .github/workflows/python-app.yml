@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master  # ou la branche que vous utilisez
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository # Checkout repository: Cela récupère les fichiers de votre dépôt GitHub pour que les actions suivantes puissent les utiliser.
+      uses: actions/checkout@v4.1.1
+
+    - name: Set up Python # Cela configure l'environnement Python pour votre workflow. Il utilise la version 3.11 de Python.
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.11  # Remplacez "3.x" par la version de Python que vous utilisez
+
+
+    - name: Install dependencies #  Cela installe les dépendances nécessaires pour votre projet, spécifiées dans le fichier requirements.txt.
+      run: |
+        cd $GITHUB_WORKSPACE
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Set PYTHONPATH  # Cela définit la variable d'environnement PYTHONPATH pour inclure le répertoire de travail GitHub. 
+                            # Cela peut être utile pour que Python trouve les modules de votre projet.
+      run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+
+
+    - name: Print sys.path  # Cela affiche le chemin de recherche des modules Python. Utile pour déboguer et vérifier que les chemins sont correctement configurés.
+      run: python -c "import sys; print(sys.path)"
+
+    - name: Install mongodb  # Cela installe MongoDB en utilisant l'action GitHub supercharge/mongodb-github-action. 
+                             # Cela peut être nécessaire si vos tests dépendent d'une base de données MongoDB.
+      uses: supercharge/mongodb-github-action@1.10.0
+
+    - name: Create logs folder  # Cela crée un dossier pour les journaux dans le répertoire de travail.
+      run: mkdir -p $GITHUB_WORKSPACE/logs
+
+    - name: Change to the repository root  # Cela se déplace vers la racine du dépôt. 
+                                           # Cela peut être important si vos tests ou scripts ont des dépendances de chemin.
+      run: cd $GITHUB_WORKSPACE
+
+    - name: Run tests  # Cela exécute les tests en utilisant pytest. Le chemin spécifié (./tests/conftest.py) indique probablement que vous avez des tests dans le dossier tests.
+      run: |
+        pip install pytest 
+        pytest ./tests/test_app.py
+
+    - name: Run linter (exemple avec flake8)  # Cela installe et exécute le linter flake8 pour vérifier le respect des conventions de codage.
+      run: |
+        pip install flake8
+        flake8 . 
