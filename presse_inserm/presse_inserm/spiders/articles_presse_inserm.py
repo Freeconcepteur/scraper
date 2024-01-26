@@ -26,7 +26,7 @@ class ArticlesSpider(scrapy.Spider):
 
 
 # Suivre les liens de pagination (si applicable)
-        next_page = response.css("#posts-list > div > div > div > div.pagination03 > div > a.nextpostslink::attr(href)").get()#posts-list > div > div > div > div.pagination03 > div > a.nextpostslink
+        next_page = response.css("# posts-list > div > div > div > div.pagination03 > div > a.nextpostslink::attr(href)").get()#posts-list > div > div > div > div.pagination03 > div > a.nextpostslink
         if next_page is not None:
             next_page = response.urljoin(next_page)
             yield scrapy.Request(next_page, callback=self.parse)

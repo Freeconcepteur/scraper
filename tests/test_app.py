@@ -2,7 +2,7 @@ import json
 import pytest
 import os
 import sys
-from application_flask.app import lire_jsonl 
+from application_flask.app import lire_jsonl
 from application_flask.app import app
 
 # Ajout du répertoire parent au PYTHONPATH
