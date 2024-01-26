@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - master  # ou la branche que vous utilisez
+      - main  # ou la branche que vous utilisez
 
 jobs:
   testing:
