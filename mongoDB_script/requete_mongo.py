@@ -5,7 +5,7 @@ def find_articles_with_keyword(db_name, collection_name, keyword):
     client = MongoClient("mongodb://localhost:27017/")
     db = client[db_name]
     collection = db[collection_name]
-    query = {"title": {"$regex": keyword, "$options": "i"}}  
+    query = {"title": {"$regex": keyword, "$options": "i"}}
     articles = collection.find(query)
 
     return list(articles)
