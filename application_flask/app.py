@@ -5,16 +5,18 @@ import os
 
 app = Flask(__name__)
 
-# Configuration de la connexion MongoDB (ajustez les paramètres selon votre configuration)
-# client = MongoClient("mongodb://localhost:27017/")
+
+# Configuration de la connexion MongoDB 
 # db = client["inserm_articles"]
 # collection = db["articles"]
 
-# Configurer le chemin par défaut pour 'resultats.jsonl', peut être surchargé dans les tests
+
+# Configurer le chemin par défaut pour 'resultats.jsonl'
 app.config['RESULTATS_JSONL_PATH'] = os.path.join(
     app.root_path, 
-    'data', 
+    'data',
     'resultats.jsonl')
+
 
 def lire_jsonl(chemin_fichier):
     with open(chemin_fichier, 'r') as file:
