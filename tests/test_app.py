@@ -2,12 +2,11 @@ import json
 import pytest
 import os
 import sys
+from application_flask.app import lire_jsonl 
+from application_flask.app import app
 
 # Ajout du répertoire parent au PYTHONPATH
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-from application_flask.app import lire_jsonl 
-from application_flask.app import app
 
 # Fixture pour créer un fichier .jsonl temporaire
 @pytest.fixture

@@ -33,7 +33,9 @@ class PresseInsermPipeline:
     def process_item(self, item, spider):
         adapter = ItemAdapter(item)
         # Vérifier si un document avec le même titre existe déjà dans la collection
-        if not self.db[self.collection_name].find_one({'title': adapter['title']}):
+        
+        if not self.db[self.collection_name].find_one({'title': adapter['title'
+]}):
             # Si non, insérer l'élément
             self.db[self.collection_name].insert_one(adapter.asdict())
         return item

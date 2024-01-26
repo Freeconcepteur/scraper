@@ -6,14 +6,14 @@ import os
 app = Flask(__name__)
 
 
-# Configuration de la connexion MongoDB 
+# Configuration de la connexion MongoDB
 # db = client["inserm_articles"]
 # collection = db["articles"]
 
 
 # Configurer le chemin par défaut pour 'resultats.jsonl'
 app.config['RESULTATS_JSONL_PATH'] = os.path.join(
-    app.root_path, 
+    app.root_path,
     'data',
     'resultats.jsonl')
 
