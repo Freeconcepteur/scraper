@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Élément Aléatoire</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Élément Aléatoire de la Base de Données</h1>
+        <div>
+            <h2>{{ item.title }}</h2>
+            <p>{{ item.synopsis }}</p>
+            <a href="{{ item.link }}">Lire plus</a>
+        </div>
+    </div>
+</body>
+</html>
